@@ -1,3 +1,8 @@
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import QueryProvider from "@/lib/providers/query-client";
+import { Layout as AntLayout, ConfigProvider, theme } from 'antd';
+import { AnimatePresence, motion } from 'framer-motion';
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -19,15 +24,64 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
-        {children}
+        <QueryProvider>
+          <ConfigProvider
+            theme={{
+              algorithm: theme.darkAlgorithm,
+              token: {
+                colorPrimary: '#e91e63',
+                colorBgBase: '#0a0a1a',
+                borderRadius: 8,
+              },
+              components: {
+                Button: {
+                  colorPrimary: '#e91e63',
+                },
+                Input: {
+                  colorBgBase: '#1a1a2e',
+                  colorBorder: '#333',
+                },
+                Select: {
+                  colorBgBase: '#1a1a2e',
+                  colorBorder: '#333',
+                },
+                Card: {
+                  colorBgBase: '#1a1a2e',
+                },
+              },
+            }}
+          >
+            <AntLayout className="min-h-screen">
+              <Navbar />
+              {/* <AntLayout.Content> */}
+                {/* <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`content`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  > */}
+
+                    {children}
+                  {/* </motion.div>
+                </AnimatePresence> */}
+              {/* </AntLayout.Content> */}
+              <Footer />
+            </AntLayout>
+          </ConfigProvider>
+        </QueryProvider>
       </body>
     </html>
   );

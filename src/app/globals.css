@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #e91e63;
+  --background-dark: #0a0a1a;
+  --background-card: #1a1a2e;
 }
 
 @theme inline {
@@ -23,4 +26,93 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.ant-layout {
+  background-color: var(--background-dark) !important;
+}
+
+.ant-input,
+.ant-select,
+.ant-select-selector {
+  background-color: var(--background-card) !important;
+  color: white !important;
+  border-color: #333 !important;
+}
+
+.ant-select-item {
+  background-color: var(--background-card) !important;
+  color: white !important;
+}
+
+.ant-select-item-option-selected {
+  background-color: rgba(233, 30, 99, 0.1) !important;
+}
+
+.ant-select-dropdown {
+  background-color: var(--background-card) !important;
+}
+
+.ant-card {
+  background-color: var(--background-card) !important;
+}
+
+.ant-slider-rail {
+  background-color: #333 !important;
+}
+
+.ant-slider-track {
+  background-color: var(--primary) !important;
+}
+
+.ant-slider-handle {
+  border-color: var(--primary) !important;
+}
+
+.ant-divider {
+  border-color: #333 !important;
+}
+
+.ant-skeleton-image {
+  background-color: #333 !important;
+}
+
+.ant-radio-wrapper {
+  color: #ccc !important;
+}
+
+.ant-radio-checked .ant-radio-inner {
+  border-color: var(--primary) !important;
+  background-color: var(--primary) !important;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

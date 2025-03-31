@@ -1,0 +1,380 @@
+[
+  {
+    "id": "1",
+    "name": "Golden Crown",
+    "price": 200,
+    "image": "https://via.placeholder.com/150/gold",
+    "rarity": "Legendary",
+    "category": "Hat",
+    "creator": {
+      "name": "John Doe",
+      "avatar": "https://i.pravatar.cc/150?u=john"
+    },
+    "like": true,
+    "createdAt": "2025-03-31T10:00:00Z"
+  },
+  {
+    "id": "2",
+    "name": "Crystal Boots",
+    "price": 350,
+    "image": "https://via.placeholder.com/150/blue",
+    "rarity": "Epic",
+    "category": "Shoes",
+    "creator": {
+      "name": "Sarah Wilson",
+      "avatar": "https://i.pravatar.cc/150?u=sarah"
+    },
+    "like": false,
+    "createdAt": "2025-03-30T15:30:00Z"
+  },
+  {
+    "id": "3",
+    "name": "Dragon Scale Armor",
+    "price": 800,
+    "image": "https://via.placeholder.com/150/red",
+    "rarity": "Mythic",
+    "category": "Upper Body",
+    "creator": {
+      "name": "Mike Chen",
+      "avatar": "https://i.pravatar.cc/150?u=mike"
+    },
+    "like": true,
+    "createdAt": "2025-03-29T08:15:00Z"
+  },
+  {
+    "id": "4",
+    "name": "Shadow Pants",
+    "price": 250,
+    "image": "https://via.placeholder.com/150/black",
+    "rarity": "Rare",
+    "category": "Lower Body",
+    "creator": {
+      "name": "Emma Brown",
+      "avatar": "https://i.pravatar.cc/150?u=emma"
+    },
+    "like": false,
+    "createdAt": "2025-03-28T12:45:00Z"
+  },
+  {
+    "id": "5",
+    "name": "Mystic Amulet",
+    "price": 450,
+    "image": "https://via.placeholder.com/150/purple",
+    "rarity": "Epic",
+    "category": "Accessory",
+    "creator": {
+      "name": "Alex Turner",
+      "avatar": "https://i.pravatar.cc/150?u=alex"
+    },
+    "like": true,
+    "createdAt": "2025-03-27T14:20:00Z"
+  },
+  {
+    "id": "6",
+    "name": "Wizard Hat",
+    "price": 300,
+    "image": "https://via.placeholder.com/150/blue",
+    "rarity": "Rare",
+    "category": "Hat",
+    "creator": {
+      "name": "Luna Park",
+      "avatar": "https://i.pravatar.cc/150?u=luna"
+    },
+    "like": true,
+    "createdAt": "2025-03-26T09:10:00Z"
+  },
+  {
+    "id": "7",
+    "name": "Steel Plate Armor",
+    "price": 600,
+    "image": "https://via.placeholder.com/150/gray",
+    "rarity": "Epic",
+    "category": "Upper Body",
+    "creator": {
+      "name": "Marcus Steel",
+      "avatar": "https://i.pravatar.cc/150?u=marcus"
+    },
+    "like": false,
+    "createdAt": "2025-03-25T16:40:00Z"
+  },
+  {
+    "id": "8",
+    "name": "Leather Boots",
+    "price": 150,
+    "image": "https://via.placeholder.com/150/brown",
+    "rarity": "Common",
+    "category": "Shoes",
+    "creator": {
+      "name": "Oliver Smith",
+      "avatar": "https://i.pravatar.cc/150?u=oliver"
+    },
+    "like": false,
+    "createdAt": "2025-03-24T11:30:00Z"
+  },
+  {
+    "id": "9",
+    "name": "Phoenix Wings",
+    "price": 1000,
+    "image": "https://via.placeholder.com/150/orange",
+    "rarity": "Mythic",
+    "category": "Accessory",
+    "creator": {
+      "name": "Isabella Fire",
+      "avatar": "https://i.pravatar.cc/150?u=isabella"
+    },
+    "like": true,
+    "createdAt": "2025-03-23T13:15:00Z"
+  },
+  {
+    "id": "10",
+    "name": "Royal Leggings",
+    "price": 400,
+    "image": "https://via.placeholder.com/150/purple",
+    "rarity": "Epic",
+    "category": "Lower Body",
+    "creator": {
+      "name": "Royal Smith",
+      "avatar": "https://i.pravatar.cc/150?u=royal"
+    },
+    "like": true,
+    "createdAt": "2025-03-22T10:20:00Z"
+  },
+  {
+    "id": "11",
+    "name": "Ice Crown",
+    "price": 750,
+    "image": "https://via.placeholder.com/150/lightblue",
+    "rarity": "Legendary",
+    "category": "Hat",
+    "creator": {
+      "name": "Frost Queen",
+      "avatar": "https://i.pravatar.cc/150?u=frost"
+    },
+    "like": true,
+    "createdAt": "2025-03-21T17:45:00Z"
+  },
+  {
+    "id": "12",
+    "name": "Basic Shirt",
+    "price": 100,
+    "image": "https://via.placeholder.com/150/white",
+    "rarity": "Common",
+    "category": "Upper Body",
+    "creator": {
+      "name": "Basic Joe",
+      "avatar": "https://i.pravatar.cc/150?u=joe"
+    },
+    "like": false,
+    "createdAt": "2025-03-20T08:30:00Z"
+  },
+  {
+    "id": "13",
+    "name": "Rainbow Sandals",
+    "price": 200,
+    "image": "https://via.placeholder.com/150/rainbow",
+    "rarity": "Rare",
+    "category": "Shoes",
+    "creator": {
+      "name": "Rainbow Dash",
+      "avatar": "https://i.pravatar.cc/150?u=rainbow"
+    },
+    "like": true,
+    "createdAt": "2025-03-19T14:50:00Z"
+  },
+  {
+    "id": "14",
+    "name": "Diamond Ring",
+    "price": 900,
+    "image": "https://via.placeholder.com/150/cyan",
+    "rarity": "Legendary",
+    "category": "Accessory",
+    "creator": {
+      "name": "Diamond Smith",
+      "avatar": "https://i.pravatar.cc/150?u=diamond"
+    },
+    "like": true,
+    "createdAt": "2025-03-18T11:25:00Z"
+  },
+  {
+    "id": "15",
+    "name": "Cargo Pants",
+    "price": 180,
+    "image": "https://via.placeholder.com/150/khaki",
+    "rarity": "Common",
+    "category": "Lower Body",
+    "creator": {
+      "name": "Cargo Bob",
+      "avatar": "https://i.pravatar.cc/150?u=cargo"
+    },
+    "like": false,
+    "createdAt": "2025-03-17T16:15:00Z"
+  },
+  {
+    "id": "16",
+    "name": "Demon Horns",
+    "price": 666,
+    "image": "https://via.placeholder.com/150/darkred",
+    "rarity": "Mythic",
+    "category": "Hat",
+    "creator": {
+      "name": "Lucy Fer",
+      "avatar": "https://i.pravatar.cc/150?u=lucy"
+    },
+    "like": true,
+    "createdAt": "2025-03-16T13:00:00Z"
+  },
+  {
+    "id": "17",
+    "name": "Space Suit",
+    "price": 850,
+    "image": "https://via.placeholder.com/150/silver",
+    "rarity": "Legendary",
+    "category": "Upper Body",
+    "creator": {
+      "name": "Astro Nova",
+      "avatar": "https://i.pravatar.cc/150?u=astro"
+    },
+    "like": true,
+    "createdAt": "2025-03-15T09:40:00Z"
+  },
+  {
+    "id": "18",
+    "name": "Running Shoes",
+    "price": 220,
+    "image": "https://via.placeholder.com/150/green",
+    "rarity": "Rare",
+    "category": "Shoes",
+    "creator": {
+      "name": "Sprint King",
+      "avatar": "https://i.pravatar.cc/150?u=sprint"
+    },
+    "like": false,
+    "createdAt": "2025-03-14T15:55:00Z"
+  },
+  {
+    "id": "19",
+    "name": "Lucky Charm",
+    "price": 777,
+    "image": "https://via.placeholder.com/150/gold",
+    "rarity": "Mythic",
+    "category": "Accessory",
+    "creator": {
+      "name": "Fortune Teller",
+      "avatar": "https://i.pravatar.cc/150?u=fortune"
+    },
+    "like": true,
+    "createdAt": "2025-03-13T12:35:00Z"
+  },
+  {
+    "id": "20",
+    "name": "Battle Shorts",
+    "price": 280,
+    "image": "https://via.placeholder.com/150/navy",
+    "rarity": "Rare",
+    "category": "Lower Body",
+    "creator": {
+      "name": "War Chief",
+      "avatar": "https://i.pravatar.cc/150?u=war"
+    },
+    "like": false,
+    "createdAt": "2025-03-12T10:05:00Z"
+  },
+  {
+    "id": "21",
+    "name": "Golden Shield",
+    "price": 950,
+    "image": "https://via.placeholder.com/150/yellow",
+    "rarity": "Legendary",
+    "category": "Accessory",
+    "creator": {
+      "name": "Guardian Angel",
+      "avatar": "https://i.pravatar.cc/150?u=guardian"
+    },
+    "like": true,
+    "createdAt": "2025-03-11T14:30:00Z"
+  },
+  {
+    "id": "22",
+    "name": "Casual Tee",
+    "price": 120,
+    "image": "https://via.placeholder.com/150/lightgray",
+    "rarity": "Common",
+    "category": "Upper Body",
+    "creator": {
+      "name": "Casual Chris",
+      "avatar": "https://i.pravatar.cc/150?u=casual"
+    },
+    "like": false,
+    "createdAt": "2025-03-10T11:50:00Z"
+  },
+  {
+    "id": "23",
+    "name": "Combat Boots",
+    "price": 320,
+    "image": "https://via.placeholder.com/150/olive",
+    "rarity": "Rare",
+    "category": "Shoes",
+    "creator": {
+      "name": "Combat Carl",
+      "avatar": "https://i.pravatar.cc/150?u=combat"
+    },
+    "like": true,
+    "createdAt": "2025-03-09T13:20:00Z"
+  },
+  {
+    "id": "24",
+    "name": "Enchanted Cloak",
+    "price": 600,
+    "image": "https://via.placeholder.com/150/pink",
+    "rarity": "Epic",
+    "category": "Upper Body",
+    "creator": {
+      "name": "Magic Mike",
+      "avatar": "https://i.pravatar.cc/150?u=magic"
+    },
+    "like": true,
+    "createdAt": "2025-03-08T10:10:00Z"
+  },
+  {
+    "id": "25",
+    "name": "Stealth Boots",
+    "price": 400,
+    "image": "https://via.placeholder.com/150/darkgreen",
+    "rarity": "Epic",
+    "category": "Shoes",
+    "creator": {
+      "name": "Stealthy Steve",
+      "avatar": "https://i.pravatar.cc/150?u=stealthy"
+    },
+    "like": false,
+    "createdAt": "2025-03-07T12:00:00Z"
+  },
+  {
+    "id": "26",
+    "name": "Golden Sword",
+    "price": 1200,
+    "image": "https://via.placeholder.com/150/gold",
+    "rarity": "Mythic",
+    "category": "Weapon",
+    "creator": {
+      "name": "Sword Master",
+      "avatar": "https://i.pravatar.cc/150?u=sword"
+    },
+    "like": true,
+    "createdAt": "2025-03-06T14:45:00Z"
+  },
+  {
+    "id": "27",
+    "name": "Leather Jacket",
+    "price": 350,
+    "image": "https://via.placeholder.com/150/brown",
+    "rarity": "Rare",
+    "category": "Upper Body",
+    "creator": {
+      "name": "Rebel Rider",
+      "avatar": "https://i.pravatar.cc/150?u=rebel"
+    },
+    "like": false,
+    "createdAt": "2025-03-05T11:15:00Z"
+  }
+]
