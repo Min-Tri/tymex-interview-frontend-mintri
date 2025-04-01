@@ -22,7 +22,7 @@ const ItemGrid: React.FC<ItemGridProps> = ({
   onLoadMore,
   isFetchingMore,
 }) => {
-  if (isLoading && items.length === 0) {
+  if (isLoading) {
     return (
       <div className="flex justify-center items-center py-12">
         <Spin size="large" />

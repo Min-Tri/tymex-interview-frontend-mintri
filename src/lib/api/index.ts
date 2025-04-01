@@ -24,8 +24,11 @@ export async function getItems(
     params.append('price_gte', filters.priceRange[0].toString());
     params.append('price_lte', filters.priceRange[1].toString());
   }
-  if (filters.sortBy) {
-    params.append('_sort', filters.sortBy);
+  if (filters.sortByTime) {
+    params.append('_sort_time', filters.sortByTime);
+  }
+  if (filters.sortByPrice) {
+    params.append('_sort_price', filters.sortByPrice);
   }
 
   try {

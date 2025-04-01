@@ -1,10 +1,11 @@
 'use client'
 import React from 'react';
-import { Layout, Row, Col, Input, } from 'antd';
+import { Layout, Row, Col, } from 'antd';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { PhoneOutlined, MailOutlined } from '@ant-design/icons';
 import Button from '@/components/common/Button';
+import Input from '@/components/common/Input';
 
 const { Footer: AntFooter } = Layout;
 

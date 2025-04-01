@@ -6,6 +6,8 @@
   --primary: #e91e63;
   --background-dark: #0a0a1a;
   --background-card: #1a1a2e;
+  --background-gradient: linear-gradient(140deg, rgba(218,69,143,1) 0%, rgba(218,52,221,1) 100%);
+  --background-gradient-dark: linear-gradient(140deg, rgba(218,69,143,0.6) 0%, rgba(218,52,221,0.6) 100%);
 }
 
 @theme inline {
@@ -53,14 +55,30 @@ body {
 .ant-input,
 .ant-select,
 .ant-select-selector {
-  background-color: var(--background-card) !important;
+  background-color: var(--background-dark) !important;
   color: white !important;
-  border-color: #333 !important;
+  border-color: #364753 !important;
+  height: 43px !important;
+}
+
+.ant-tag {
+  background-image: var(--background-gradient-dark) !important;
+  color: white !important;
+  height: 43px !important;
+  align-content: center !important;
+}
+
+.ant-tag-checkable-checked {
+  background-image: var(--background-gradient) !important;
 }
 
 .ant-select-item {
   background-color: var(--background-card) !important;
   color: white !important;
+}
+
+.ant-input::placeholder {
+  color: #ccc !important;
 }
 
 .ant-select-item-option-selected {

@@ -40,8 +40,8 @@ const ItemList: React.FC = () => {
   };
 
   return (
-    <div className="w-full" style={{backgroundImage: 'url(/images/marketplace-bg.png) !important', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-      <Row gutter={[32, 32]} className='w-full max-w-7xl !mx-auto px-4 py-12'>
+    <div className="w-full" style={{ backgroundImage: 'url(/images/marketplace-bg.png) !important', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      <Row gutter={[24, 24]} className='w-full max-w-7xl !mx-auto px-4 py-12'>
         <Col xs={24} lg={6}>
           <div className="sticky top-24">
             <Filters
@@ -107,13 +107,14 @@ const ItemList: React.FC = () => {
           </AnimatePresence>
         </Col>
       </Row>
-      <div className='w-full h-[400px] relative p-52'>
-      <Image
-        src="decor.svg"
-        alt="Marketplace Background"
-        fill
-        objectFit="cover"
-      />
+      <div className='w-full min-h-[200px] md:min-h-[400px] max-h-fit relative'>
+        <Image
+          src="decor.svg"
+          alt="Marketplace Background"
+          fill
+          className="object-top !h-[200px] md:!h-[400px] w-full"
+          objectFit="cover"
+        />
       </div>
     </div>
   );

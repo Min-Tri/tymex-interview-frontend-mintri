@@ -1,6 +1,7 @@
 import React from 'react';
 import '@ant-design/v5-patch-for-react-19';
 import { Button as AntdButton, ButtonProps as AntdButtonProps } from 'antd';
+import classNames from 'classnames';
 
 //custom button antd
 interface CustomButtonProps extends AntdButtonProps {
@@ -9,7 +10,7 @@ interface CustomButtonProps extends AntdButtonProps {
 
 const Button: React.FC<CustomButtonProps> = ({ className, children, ...props }) => {
     return (
-        <AntdButton className={'!bg-gradient-to-r !rounded-sm !from-[#DA458F] !to-[#DA34DD] !text-white '+ className} {...props}>
+        <AntdButton className={classNames('!bg-gradient-to-r !rounded-sm !from-[#DA458F] !to-[#DA34DD] !text-white',className)} {...props}>
             {children}
         </AntdButton>
     );

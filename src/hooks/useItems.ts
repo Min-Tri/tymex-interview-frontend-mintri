@@ -1,6 +1,6 @@
 import { getItems } from '@/lib/api';
 import { TFilter } from '@/lib/types';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import debounce from 'lodash.debounce';
 import { useCallback, useState } from 'react';
 import useAutoRefresh from './useAutoRefetch';
@@ -11,7 +11,6 @@ const AUTO_REFRESH_INTERVAL = Number(process.env.NEXT_PUBLIC_AUTO_REFRESH_INTERV
 export function useItems(initialFilters: TFilter) {
   const [page, setPage] = useState(1);
   const [filters, setFilters] = useState<TFilter>(initialFilters);
-  const queryClient = useQueryClient();
 
   const debouncedSetFilters = useCallback(
     debounce((newFilters: TFilter) => {
