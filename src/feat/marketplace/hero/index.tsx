@@ -2,88 +2,50 @@ import React from 'react';
 import * as motion from "framer-motion/client"
 import Image from 'next/image';
 import { Button } from 'antd';
+import Character from './components/character';
 
 interface HeroBannerProps {
-  title?: string;
-  description?: string;
-  imageUrl?: string;
-  actionLabel?: string;
-  onActionClick?: () => void;
+  link?: string;
 }
 
 const HeroBanner: React.FC<HeroBannerProps> = ({
-  title = "NEW ARRIVAL",
-  description,
-  actionLabel = "SHOP NOW",
-  onActionClick,
+  link = '#',
 }) => {
   return (
-    <div className="relative h-96 md:h-[500px] w-full overflow-hidden" style={{ backgroundImage: 'url(/images/hero-bg.png) !important', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-      <div className="absolute inset-0 z-0">
-        {/* <Image
-          src={imageUrl}
-          alt="Banner background"
-          layout="fill"
-          objectFit="cover"
-          className="opacity-40"
-        /> */}
-      </div>
-
-      <div className="relative z-10 h-full max-w-7xl mx-auto px-6 flex items-center">
-        <div className="w-full relative flex flex-col items-start justify-between h-full">
-          <div/>
+    <div className="relative h-80 sm:h-96 md:h-[600px] w-full overflow-hidden" style={{ backgroundImage: 'url(/images/hero-bg.png) !important', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      <div className="relative z-10 h-full max-w-7xl mx-auto flex items-center">
+        <div className="w-full relative flex flex-col items-center md:items-start justify-center md:justify-between h-full">
+          <div className='hidden md:block' />
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className='max-w-2xl'
+            className='max-w-2xl mx-5 md:ml-20'
           >
-            <div className="relative">
-              {/* <div className="absolute -left-10 -top-10">
-                <motion.div
-                  initial={{ rotate: -10, scale: 0.8 }}
-                  animate={{ rotate: 0, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="bg-primary text-white px-6 py-3 rounded-lg font-bold text-2xl transform rotate-12"
-                >
-                  NEW
-                </motion.div>
-              </div> */}
-
-              {/* <h1 className="text-6xl font-bold text-white mb-4">{title}</h1> */}
+            <a className="relative" href={link}>
               <Image src="shop-now.svg" height={300} width={1000} objectFit='contain' alt='shop now' />
-            </div>
-
-            {/* {description && (
-              <p className="text-gray-300 text-xl mb-8">{description}</p>
-            )}
-
-            {actionLabel && (
-              <Button
-                type="primary"
-                size="large"
-                className="bg-primary border-none hover:bg-primary-dark text-lg h-12 px-8"
-                onClick={onActionClick}
-              >
-                {actionLabel}
-              </Button>
-            )} */}
+            </a>
           </motion.div>
-          <div className='w-full min-h-[200px] max-h-fit relative bottom-0'>
-            <Image
-              src="/images/Vector.png"
-              alt="Marketplace Background"
-              fill
-              className="object-center h-[150px] w-full"
-              objectFit="cover"
-            />
+          <div className='w-full hidden min-h-[250px] max-h-fit relative md:flex items-center gap-4 lg:gap-8 pl-8 lg:pl-12' style={{ backgroundImage: 'url(/images/Vector.png) !important', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+            <Character name="ASSASSIN" src='/images/Assassin.png' alt='ASSASSIN' />
+            <Character name="NEON GUY" src='/images/Neon Guy.png' alt='NEON GUY' />
+            <Character name="MAFIA ENGLAND" src='/images/Mafia England.png' alt='MAFIA ENGLAND' className={'hidden lg:block'} />
+            <Character name="Bassketball Girl" src='/images/Bassketball Girl.png' alt='Bassketball Girl' className={'hidden xl:block'} />
           </div>
-          <div className='w-full max-h-[400px] absolute right-2'>
+          <div className='w-[500px] hidden md:block max-h-[600px] absolute -right-4 bottom-0 -translate-y-[450px]'>
             <Image
               src="/images/The DJ.png"
               alt="Marketplace Background"
               fill
-              className="object-top !h-[400px] !w-[400px]"
+              className="object-top !h-[500px] !w-[600px] -scale-x-100"
+            />
+            <Image
+              src="/images/lineDJ.png"
+              alt="line"
+              height={100}
+              width={265}
+              objectFit="contain"
+              className="object-center absolute top-[335px] left-[57%] -translate-x-1/2"
             />
           </div>
         </div>

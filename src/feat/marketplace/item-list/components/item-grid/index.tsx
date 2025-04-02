@@ -22,7 +22,7 @@ const ItemGrid: React.FC<ItemGridProps> = ({
   onLoadMore,
   isFetchingMore,
 }) => {
-  if (isLoading) {
+  if (isLoading && items.length === 0) {
     return (
       <div className="flex justify-center items-center py-12">
         <Spin size="large" />
@@ -30,7 +30,7 @@ const ItemGrid: React.FC<ItemGridProps> = ({
     );
   }
 
-  if (isError) {
+  if (isError && items.length === 0) {
     return (
       <div className="text-center py-12">
         <Empty
@@ -59,7 +59,13 @@ const ItemGrid: React.FC<ItemGridProps> = ({
       <Row gutter={[16, 16]}>
         {items.map((item, index) => (
           <Col xs={24} sm={12} md={8} lg={6} key={`${item.id}-${index}`}>
-            <ItemCard item={item} />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: index * 0.05 }}
+            >
+              <ItemCard item={item} />
+            </motion.div>
           </Col>
         ))}
       </Row>
@@ -77,9 +83,15 @@ const ItemGrid: React.FC<ItemGridProps> = ({
               className="bg-primary text-white border-none hover:bg-primary-dark !px-28 !py-8.5"
               size="large"
             >
-              View more
+              {isFetchingMore ? 'Loading...' : 'View more'}
             </Button>
           </motion.div>
+        </div>
+      )}
+
+      {isFetchingMore && (
+        <div className="text-center mt-4">
+          <Spin size="small" />
         </div>
       )}
     </div>

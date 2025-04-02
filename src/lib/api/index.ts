@@ -20,6 +20,9 @@ export async function getItems(
   if (filters.rarity) {
     params.append('rarity', filters.rarity);
   }
+  if (filters.theme) {
+    params.append('theme', filters.theme);
+  }
   if (filters.priceRange) {
     params.append('price_gte', filters.priceRange[0].toString());
     params.append('price_lte', filters.priceRange[1].toString());

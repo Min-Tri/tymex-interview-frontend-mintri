@@ -3,7 +3,7 @@
 import '@ant-design/v5-patch-for-react-19';
 import Skeleton from '@/components/common/Skeleton';
 import { useItems } from '@/hooks/useItems';
-import { Col, Divider, Flex, Row, Tag } from 'antd';
+import { Col, Flex, Row, Tag } from 'antd';
 import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
 import Filters from './components/filters';
@@ -62,6 +62,16 @@ const ItemList: React.FC = () => {
             </div>
           </div> */}
           <Flex gap={4} wrap align="center">
+            <Tag.CheckableTag
+              key="all"
+              checked={selectedTags.length === 0}
+              onChange={(checked) => {
+                const nextSelectedTags = checked ? [] : selectedTags;
+                setSelectedTags(nextSelectedTags);
+              }}
+            >
+              All
+            </Tag.CheckableTag>
             {Object.values(itemCategories).map<React.ReactNode>((tag) => (
               <Tag.CheckableTag
                 key={tag}
@@ -73,7 +83,8 @@ const ItemList: React.FC = () => {
             ))}
           </Flex>
 
-          <Divider className="border-gray-800 mb-8" />
+          {/* <Divider className="border-gray-800 mb-8" /> */}
+          <div className='mb-8'/>
 
           <AnimatePresence mode="wait">
             {isLoading && items.length === 0 ? (
@@ -107,12 +118,12 @@ const ItemList: React.FC = () => {
           </AnimatePresence>
         </Col>
       </Row>
-      <div className='w-full min-h-[200px] md:min-h-[400px] max-h-fit relative'>
+      <div className='w-full min-h-[200px] lg:min-h-[400px] max-h-fit relative'>
         <Image
           src="decor.svg"
           alt="Marketplace Background"
           fill
-          className="object-top !h-[200px] md:!h-[400px] w-full"
+          className="object-top !h-[200px] lg:!h-[400px] w-full"
           objectFit="cover"
         />
       </div>

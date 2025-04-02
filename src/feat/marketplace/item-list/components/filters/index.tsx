@@ -8,32 +8,32 @@ import Input from '@/components/common/Input';
 const { Option } = Select;
 
 const FILTER_OPTIONS = {
-  CATEGORIES: [
-    'Upper Body',
-    'Lower Body',
-    'Hat',
-    'Shoes',
-    'Accessory'
-  ],
-  RARITIES: [
+  // CATEGORIES: [
+  //   'Upper Body',
+  //   'Lower Body',
+  //   'Hat',
+  //   'Shoes',
+  //   'Accessory'
+  // ],
+  TIER: [
     'Common',
     'Rare',
     'Epic',
     'Legendary',
     'Mythic'
   ],
-  THEMES: [
+  THEME: [
     { value: 'halloween', label: 'Halloween' },
     { value: 'beach', label: 'Beach' },
     { value: 'new-year', label: 'New Year' },
     { value: 'valentine', label: 'Valentine' },
     { value: 'default', label: 'Default' }
   ],
-  SORT_TIME: [
+  TIME: [
     { value: 'latest', label: 'Latest' },
     { value: 'oldest', label: 'Oldest' }
   ],
-  SORT_PRICE: [
+  PRICE: [
     { value: 'price-asc', label: 'Low to High' },
     { value: 'price-desc', label: 'High to Low' }
   ]

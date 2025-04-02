@@ -3,6 +3,7 @@ import Button from '@/components/common/Button';
 import { Select } from 'antd';
 import Layout from 'antd/lib/layout';
 import Menu from 'antd/lib/menu';
+import Image from 'next/image';
 
 const { Header } = Layout;
 
@@ -33,10 +34,13 @@ function Navbar() {
 
         <Button
           type="primary"
+          style={{ boxShadow: 'none !important' }}
         >
           Connect Wallet
         </Button>
-        <Select className='!w-[70px] !text-white' defaultValue="en">
+        <Select prefix={
+          <Image alt='lang' src='globe.svg' width={16} height={16} />
+        } className='!w-[70px] !text-white' defaultValue="en">
           <Select.Option value="en">EN</Select.Option>
           <Select.Option value="vn">VN</Select.Option>
         </Select>

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Card, Badge, Tooltip } from 'antd';
 import { HeartOutlined, HeartFilled } from '@ant-design/icons';
 import { motion } from 'framer-motion';
-import { IItem } from '@/lib/types';
+import { IItem, TRarity } from '@/lib/types';
 
 interface ItemCardProps {
   item: IItem;
@@ -12,6 +12,13 @@ interface ItemCardProps {
 }
 
 const ItemCard: React.FC<ItemCardProps> = ({ item, isFavorite = false, onToggleFavorite }) => {
+  const tierBg: Record<TRarity,string[]>={
+    Common: ['#49DD81','#22B4C6'],
+    Epic: ['#DD5AFE','#6366F1'],
+    Legendary: ['#FE955A','#F1DA63'],
+    Rare: ['#43A6F6','#5868F3'],
+    Mythic: ['#FE5A5A','#F163D2'],
+  }
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -23,14 +30,17 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, isFavorite = false, onToggleF
       <Card
         className="h-full overflow-hidden bg-background-card border-0 shadow-lg"
         cover={
-          <div className={`relative pt-[100%] text-white`}>
+          <div className={`relative pt-[100%] text-white !rounded-sm`} style={{
+            backgroundImage: `linear-gradient(140deg, ${tierBg[item.rarity]?.[0]} 0%, ${tierBg[item.rarity]?.[1]} 100%)`
+          }}>
             <Image
               src={item.image || 'https://placehold.co/235x235'}
               blurDataURL={'https://placehold.co/235x235'}
               alt={item.name}
-              layout="fill"
-              objectFit="cover"
-              className="absolute top-0 left-0"
+              height={120}
+              width={120}
+              objectFit="contain"
+              className="absolute bottom-0 left-1/2 w-[120px] h-[120px] -translate-x-1/2"
             />
             <Badge
               className="!absolute top-2 left-2"

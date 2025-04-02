@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
                   placeholder="Your email address"
                   className="bg-background-card border-gray-700 flex-grow"
                 />
-                <Button type="primary" className="ml-2 border-none">
+                <Button type="primary" className="ml-2 border-none !h-10" style={{ boxShadow: 'none !important' }}>
                   Subscribe
                 </Button>
               </div>

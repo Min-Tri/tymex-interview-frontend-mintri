@@ -10,14 +10,16 @@ export async function GET(request: Request) {
     const search = searchParams.get('search') || '';
     const category = searchParams.get('category') || '';
     const rarity = searchParams.get('rarity') || '';
-    const sortBy = searchParams.get('_sort') || 'latest';
+    const theme = searchParams.get('theme') || '';
+    const sortByTime = searchParams.get('_sort_time') || 'latest';
+    const sortByPrice = searchParams.get('_sort_price') || 'price-asc';
     const price_gte = searchParams.get('price_gte') || 0;
     const price_lte = searchParams.get('price_lte') || 400;
 
     let filteredItems = [...items] as IItem[];
 
     if (search) {
-      filteredItems = filteredItems.filter(item => 
+      filteredItems = filteredItems.filter(item =>
         item.name.toLowerCase().includes(search.toLowerCase())
       );
     }
@@ -26,26 +28,41 @@ export async function GET(request: Request) {
       filteredItems = filteredItems.filter(item => item.category === category);
     }
 
+    if (theme) {
+      filteredItems = filteredItems.filter(item => item.theme === theme);
+    }
+
     if (rarity) {
       filteredItems = filteredItems.filter(item => item.rarity === rarity);
     }
 
-    filteredItems = filteredItems.filter(item => 
+    filteredItems = filteredItems.filter(item =>
       item.price >= +price_gte && item.price <= +price_lte
     );
 
-    switch (sortBy) {
-      case 'price-asc':
-        filteredItems.sort((a, b) => a.price - b.price);
-        break;
-      case 'price-desc':
-        filteredItems.sort((a, b) => b.price - a.price);
-        break;
-      case 'latest':
-      default:
-        filteredItems.sort((a, b) => 
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        );
+    // switch (sortBy) {
+    //   case 'price-asc':
+    //     filteredItems.sort((a, b) => a.price - b.price);
+    //     break;
+    //   case 'price-desc':
+    //     filteredItems.sort((a, b) => b.price - a.price);
+    //     break;
+    //   case 'latest':
+    //   default:
+    //     filteredItems.sort((a, b) => 
+    //       new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    //     );
+    // }
+
+    if (sortByTime) {
+      filteredItems = filteredItems.sort((a, b) =>
+        (sortByTime === 'latest' ? 1 : -1) * (new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+      );
+    }
+    if (sortByPrice) {
+      filteredItems = filteredItems.sort((a, b) =>
+        (sortByPrice === 'price-asc' ? 1 : -1) * (b.price - a.price)
+      );
     }
 
     // Calculate pagination
