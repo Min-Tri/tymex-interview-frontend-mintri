@@ -2,12 +2,13 @@ import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import QueryProvider from "@/lib/providers/query-client";
 import { Layout as AntLayout, ConfigProvider, theme } from 'antd';
-import { AnimatePresence, motion } from 'framer-motion';
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { getLocale } from "next-intl/server";
-import { NextIntlClientProvider } from "next-intl";
+import React from "react";
+import LoadingScreen from "@/components/common/LoadingScreen";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,36 +40,39 @@ export default async function RootLayout({
       >
         <QueryProvider>
           <NextIntlClientProvider>
-            <ConfigProvider
-              theme={{
-                algorithm: theme.darkAlgorithm,
-                token: {
-                  colorPrimary: '#e91e63',
-                  colorBgBase: '#0a0a1a',
-                  borderRadius: 8,
-                },
-                components: {
-                  Button: {
+            <React.Suspense fallback={<LoadingScreen />}>
+
+              <ConfigProvider
+                theme={{
+                  algorithm: theme.darkAlgorithm,
+                  token: {
                     colorPrimary: '#e91e63',
+                    colorBgBase: '#0a0a1a',
+                    borderRadius: 8,
                   },
-                  Input: {
-                    colorBgBase: '#1a1a2e',
-                    colorBorder: '#333',
+                  components: {
+                    Button: {
+                      colorPrimary: '#e91e63',
+                    },
+                    Input: {
+                      colorBgBase: '#1a1a2e',
+                      colorBorder: '#333',
+                    },
+                    Select: {
+                      colorBgBase: '#1a1a2e',
+                      colorBorder: '#333',
+                    },
+                    Card: {
+                      colorBgBase: '#1a1a2e',
+                    },
                   },
-                  Select: {
-                    colorBgBase: '#1a1a2e',
-                    colorBorder: '#333',
-                  },
-                  Card: {
-                    colorBgBase: '#1a1a2e',
-                  },
-                },
-              }}
-            >
-              <AntLayout className="min-h-screen">
-                <Navbar />
-                {/* <AntLayout.Content> */}
-                {/* <AnimatePresence mode="wait">
+                }}
+              >
+                <AntLayout className="min-h-screen">
+
+                  <Navbar lang={locale} />
+                  {/* <AntLayout.Content> */}
+                  {/* <AnimatePresence mode="wait">
                   <motion.div
                     key={`content`}
                     initial={{ opacity: 0 }}
@@ -77,15 +81,15 @@ export default async function RootLayout({
                     transition={{ duration: 0.3 }}
                   > */}
 
-                {children}
-                {/* </motion.div>
+                  {children}
+                  {/* </motion.div>
                 </AnimatePresence> */}
-                {/* </AntLayout.Content> */}
-                <Footer />
-              </AntLayout>
-            </ConfigProvider>
+                  {/* </AntLayout.Content> */}
+                  <Footer />
+                </AntLayout>
+              </ConfigProvider>
+            </React.Suspense>
           </NextIntlClientProvider>
-
         </QueryProvider>
       </body>
     </html>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Spin, Empty } from 'antd';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { IItem } from '@/lib/types';
 import ItemCard from '@/components/common/Card';
 import Button from '@/components/common/Button';
@@ -56,19 +56,22 @@ const ItemGrid: React.FC<ItemGridProps> = ({
 
   return (
     <div>
-      <Row gutter={[16, 16]}>
-        {items.map((item, index) => (
-          <Col xs={24} sm={12} md={8} lg={6} key={`${item.id}-${index}`}>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: index * 0.05 }}
-            >
-              <ItemCard item={item} />
-            </motion.div>
-          </Col>
-        ))}
-      </Row>
+      <AnimatePresence>
+        <Row gutter={[16, 16]}>
+          {items.map((item, index) => (
+            <Col xs={24} sm={12} md={8} lg={6} key={`${item.id}-${index}`}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ delay: index * 0.05 }}
+              >
+                <ItemCard item={item} />
+              </motion.div>
+            </Col>
+          ))}
+        </Row>
+      </AnimatePresence>
 
       {hasMore && (
         <div className="text-center mt-8 mb-12">
@@ -83,15 +86,9 @@ const ItemGrid: React.FC<ItemGridProps> = ({
               className="bg-primary text-white border-none hover:bg-primary-dark !px-28 !py-8.5"
               size="large"
             >
-              {isFetchingMore ? 'Loading...' : 'View more'}
+              {isFetchingMore ? 'Loading more...' : 'View more'}
             </Button>
           </motion.div>
-        </div>
-      )}
-
-      {isFetchingMore && (
-        <div className="text-center mt-4">
-          <Spin size="small" />
         </div>
       )}
     </div>

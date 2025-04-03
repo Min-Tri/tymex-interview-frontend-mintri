@@ -1,18 +1,20 @@
+import type { Config } from 'jest'
 const nextJest = require('next/jest')
 
 const createJestConfig = nextJest({
   dir: './src',
 })
 
-const customJestConfig = {
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+const customJestConfig: Config = {
   testEnvironment: 'jest-environment-jsdom',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
     '^@/components/(.*)$': '<rootDir>/components/$1',
     '^@/pages/(.*)$': '<rootDir>/pages/$1',
     '^@/hooks/(.*)$': '<rootDir>/hooks/$1',
     '^@/lib/(.*)$': '<rootDir>/lib/$1',
   },
+  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
   collectCoverageFrom: [
     'components/**/*.{js,jsx,ts,tsx}',
     'hooks/**/*.{js,jsx,ts,tsx}',

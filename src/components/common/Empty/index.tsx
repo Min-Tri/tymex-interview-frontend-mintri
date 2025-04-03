@@ -6,7 +6,7 @@ interface EmptyProps extends Partial<AntEmptyProps> {
     message?: string;
 }
 
-const Empty: React.FC<EmptyProps> = ({ 
+const Empty: React.FC<EmptyProps> = ({
     message = 'No data available',
     image = AntEmpty.PRESENTED_IMAGE_SIMPLE,
     ...restProps
@@ -16,6 +16,7 @@ const Empty: React.FC<EmptyProps> = ({
             <AntEmpty
                 description={message}
                 image={image}
+                classNames={{ image: '!stroke-white [&>*>path]:!fill-white', description: '!text-white' }}
                 {...restProps}
             />
         </div>

@@ -1,4 +1,4 @@
-import { IItem, TFilter, TItemsResponse } from "../types";
+import { TFilter, TItemsResponse } from "../types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
 
@@ -14,7 +14,7 @@ export async function getItems(
   if (filters.search) {
     params.append('q', filters.search);
   }
-  if (filters.category) {
+  if (filters.category || filters.category==='all') {
     params.append('category', filters.category);
   }
   if (filters.rarity) {

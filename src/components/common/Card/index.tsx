@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Card, Badge, Tooltip } from 'antd';
 import { HeartOutlined, HeartFilled } from '@ant-design/icons';
@@ -12,13 +12,14 @@ interface ItemCardProps {
 }
 
 const ItemCard: React.FC<ItemCardProps> = ({ item, isFavorite = false, onToggleFavorite }) => {
-  const tierBg: Record<TRarity,string[]>={
-    Common: ['#49DD81','#22B4C6'],
-    Epic: ['#DD5AFE','#6366F1'],
-    Legendary: ['#FE955A','#F1DA63'],
-    Rare: ['#43A6F6','#5868F3'],
-    Mythic: ['#FE5A5A','#F163D2'],
+  const tierBg: Record<TRarity, string[]> = {
+    Common: ['#49DD81', '#22B4C6'],
+    Epic: ['#DD5AFE', '#6366F1'],
+    Legendary: ['#FE955A', '#F1DA63'],
+    Rare: ['#43A6F6', '#5868F3'],
+    Mythic: ['#FE5A5A', '#F163D2'],
   }
+  const [isLike, setIsLike] = useState(false)
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -40,7 +41,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, isFavorite = false, onToggleF
               height={120}
               width={120}
               objectFit="contain"
-              className="absolute bottom-0 left-1/2 w-[120px] h-[120px] -translate-x-1/2"
+              className="absolute bottom-0 left-1/2 w-3/4 h-3/4 -translate-x-1/2"
             />
             <Badge
               className="!absolute top-2 left-2"
@@ -52,10 +53,13 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, isFavorite = false, onToggleF
               }}
             />
             <button
-              onClick={() => onToggleFavorite?.(item.id)}
-              className="absolute top-2 right-2 text-white text-xl bg-opacity-50"
+              onClick={() => {
+                onToggleFavorite?.(item.id)
+                setIsLike(!isLike)
+              }}
+              className="absolute top-2 right-2 text-white text-xl bg-opacity-50 cursor-point"
             >
-              {isFavorite ? <HeartFilled className="text-white" /> : <HeartOutlined />}
+              {(isFavorite || isLike) ? <HeartFilled className="text-white" /> : <HeartOutlined />}
             </button>
           </div>
         }
@@ -64,7 +68,9 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, isFavorite = false, onToggleF
       >
         <div className="flex justify-between items-center mb-2">
           <h3 className="text-white font-medium m-0 truncate">{item.name}</h3>
-          <span className="text-primary-light font-bold">{item.price} ETH</span>
+          <span className="text-primary-light font-bold shrink-0 flex items-center gap-1">
+            <Image alt='eth'height={8} width={8} src='eth.svg' />
+            {item.price} ETH</span>
         </div>
         <div className="flex items-center">
           <Tooltip title={item.creator.name}>

@@ -8,8 +8,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
 import Filters from './components/filters';
 import ItemGrid from './components/item-grid';
-import { itemCategories } from '@/lib/types';
+import { itemCategories, TItemCategory } from '@/lib/types';
 import Image from 'next/image';
+import Empty from '@/components/common/Empty';
 
 
 const ItemList: React.FC = () => {
@@ -31,12 +32,13 @@ const ItemList: React.FC = () => {
     type: null,
     sortByTime: 'latest',
   });
-  const [selectedTags, setSelectedTags] = React.useState<string[]>(['Movies']);
+  const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
   const handleChange = (tag: string, checked: boolean) => {
     const nextSelectedTags = checked
-      ? [...selectedTags, tag]
+      ? [tag]
       : selectedTags.filter((t) => t !== tag);
     setSelectedTags(nextSelectedTags);
+    setFilters({ ...filters, category: nextSelectedTags[0] as TItemCategory })
   };
 
   return (
@@ -47,7 +49,10 @@ const ItemList: React.FC = () => {
             <Filters
               filters={filters}
               onFilterChange={setFilters}
-              onFilterReset={resetFilters}
+              onFilterReset={() => {
+                resetFilters()
+                setSelectedTags([])
+              }}
             />
           </div>
         </Col>
@@ -68,6 +73,7 @@ const ItemList: React.FC = () => {
               onChange={(checked) => {
                 const nextSelectedTags = checked ? [] : selectedTags;
                 setSelectedTags(nextSelectedTags);
+                setFilters({ ...filters, category: 'all' as TItemCategory })
               }}
             >
               All
@@ -84,10 +90,10 @@ const ItemList: React.FC = () => {
           </Flex>
 
           {/* <Divider className="border-gray-800 mb-8" /> */}
-          <div className='mb-8'/>
+          <div className='mb-8' />
 
           <AnimatePresence mode="wait">
-            {isLoading && items.length === 0 ? (
+            {isLoading ? (
               <motion.div
                 key="loading"
                 initial={{ opacity: 0 }}
@@ -97,24 +103,28 @@ const ItemList: React.FC = () => {
               >
                 <Skeleton count={12} />
               </motion.div>
-            ) : (
-              <motion.div
-                key="content"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <ItemGrid
-                  items={items}
-                  isLoading={isLoading}
-                  isError={isError}
-                  hasMore={hasMore}
-                  onLoadMore={loadMore}
-                  isFetchingMore={isFetching && items.length > 0}
-                />
-              </motion.div>
-            )}
+            ) :
+              items.length === 0 ? (
+                <Empty />
+              )
+                : (
+                  <motion.div
+                    key="content"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ItemGrid
+                      items={items}
+                      isLoading={isLoading}
+                      isError={isError}
+                      hasMore={hasMore}
+                      onLoadMore={loadMore}
+                      isFetchingMore={isFetching && items.length > 0}
+                    />
+                  </motion.div>
+                )}
           </AnimatePresence>
         </Col>
       </Row>

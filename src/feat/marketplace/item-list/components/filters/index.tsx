@@ -133,12 +133,12 @@ const Filters: React.FC<FiltersProps> = ({
       {Object.entries(FILTER_OPTIONS).map(([key, options]) => (
         <FilterSection key={key} title={key.replace('_', ' ')}>
           <Select
-            placeholder="All"
+            placeholder="select here"
             style={{ width: '100%' }}
             value={filters[key.toLowerCase() as keyof TFilter]?.toString()}
             onChange={handleSelectChange(key.toLowerCase() as keyof TFilter)}
             allowClear
-            className="bg-background-dark"
+            className="bg-background-dark [&>span>span>svg]:!fill-white [&_.ant-select-selection-placeholder]:!text-gray-500"
           >
             {Array.isArray(options) && options.map(option => (
               typeof option === 'string' ? (

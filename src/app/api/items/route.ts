@@ -24,7 +24,7 @@ export async function GET(request: Request) {
       );
     }
 
-    if (category) {
+    if (category && category !== 'all') {
       filteredItems = filteredItems.filter(item => item.category === category);
     }
 
